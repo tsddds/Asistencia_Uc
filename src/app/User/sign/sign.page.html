@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Iniciar Sesión</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <form (ngSubmit)="SignIn()">
+    <ion-item class="ion-margin-vertical">
+      <ion-input [(ngModel)]="username" name="username" required type="text" label="Nombre de usuario"
+        labelPlacement="floating" helperText="" errorText=""></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-vertical">
+      <ion-input [type]="passwordType" [(ngModel)]="password" name="password" required label="Contraseña"
+        labelPlacement="floating" helperText="" errorText=""></ion-input>
+      <ion-icon slot="end" [name]="passwordIcon" (click)="togglePasswordVisibility()"></ion-icon>
+    </ion-item>
+    <ion-button expand="block" type="submit" class="ion-margin-top" >Iniciar Sesión</ion-button>
+  </form>
+
+  <ion-button expand="block" fill="outline" color="dark" (click)="Login()">
+    Registrarse
+  </ion-button>
+  <ion-button expand="block" fill="clear" color="medium" (click)="resetPassword()" style="font-size: 10px;">
+    Restablecer contraseña
+  </ion-button>
+
+  <ion-text color="medium" class="ion-text-center ion-padding-top">
+    <p>Usuario temporal: Usuario1</p>
+    <p>Clave temporal: MiClav3</p>
+  </ion-text>
+</ion-content>
