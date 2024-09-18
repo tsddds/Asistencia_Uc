@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="warning">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cambiar Clave</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true"  class="ion-padding">
+  <form >
+    <ion-item class="ion-margin-vertical">
+      <ion-input  [type]="passwordType" [(ngModel)]="password" name="password" required label="Ingresa tu clave"
+        labelPlacement="floating" helperText="" errorText=""></ion-input>
+      <ion-icon slot="end" [name]="passwordIcon" (click)="togglePasswordVisibility()"></ion-icon>
+    </ion-item>
+    <ion-item class="ion-margin-vertical">
+      <ion-input  [type]="passwordType" [(ngModel)]="password" name="newpassword" required label="Ingresa tu nueva clave"
+        labelPlacement="floating" helperText="" errorText=""></ion-input>
+      <ion-icon slot="end" [name]="passwordIcon" (click)="togglePasswordVisibility()"></ion-icon>
+    </ion-item>
+    <ion-item class="ion-margin-vertical">
+      <ion-input  [type]="passwordType" [(ngModel)]="password" name="compnewpassword" required label="Repite la clave"
+        labelPlacement="floating" helperText="" errorText=""></ion-input>
+      <ion-icon slot="end" [name]="passwordIcon" (click)="togglePasswordVisibility()"></ion-icon>
+    </ion-item>
+  </form>
+
+  <ion-button  expand="block"  color="warning" [routerLink]="['/home']">
+    Cambiar Clave
+  </ion-button>
+</ion-content>

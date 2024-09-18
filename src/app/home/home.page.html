@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="warning">
     <ion-title>
       Inicio
     </ion-title>
@@ -17,12 +17,41 @@
     <div>
       <h1>Bienvenido, {{ username }}!</h1>
       <p>¿Qué deseas hacer hoy?</p>
+
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="1"></ion-col>
+          <ion-col size="10">
+            <ion-button [routerLink]="['/qr-scan']" color="warning" expand="block" size="large">
+              <ion-icon slot="start" name="qr-code-outline"></ion-icon>
+              Registrar Asistencia
+            </ion-button>
+            <br>
+            <ion-button [routerLink]="['/asignaturas']" color="warning" expand="block" size="large">
+              <ion-icon slot="start" name="calendar-outline"></ion-icon>
+              Mis Asignaturas
+            </ion-button>
+            <br>
+            <ion-button [routerLink]="['/asistencias']" color="warning" expand="block" size="large">
+              <ion-icon slot="start" name="checkmark-outline"></ion-icon>
+              Mis Asistencias
+            </ion-button>
+            <br>
+            <ion-button [routerLink]="['/cambiar-clave']" color="warning" expand="block" size="large">
+              <ion-icon slot="start" name="key-outline"></ion-icon>
+              Cambiar Clave
+            </ion-button>
+          </ion-col>
+          <ion-col size="1"></ion-col>
+        </ion-row>
+      </ion-grid>
+      
     </div>
   </div>
 
   <ng-template #loginPrompt>
     <div class="login-prompt">
-      <h2>Bienvenido a Asistencia UC</h2>
+      <h2>Bienvenido a RegistrAPP</h2>
       <p>Por favor, inicia sesión para acceder a tus opciones.</p>
       <ion-button expand="block" routerLink="/sign">
         <ion-icon name="log-in-outline" slot="start"></ion-icon>

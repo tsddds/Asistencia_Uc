@@ -19,6 +19,25 @@ const routes: Routes = [
     path: 'sign',
     loadChildren: () => import('./User/sign/sign.module').then( m => m.SignPageModule)
   },
+  {
+    path: 'qr-scan',
+    loadChildren: () => import('./menu/qr-scan/qr-scan.module').then( m => m.QrScanPageModule)
+  },
+  {
+    path: 'asignaturas',
+    loadChildren: () => import('./menu/asignaturas/asignaturas.module').then( m => m.AsignaturasPageModule)
+  },
+  {
+    path: 'asistencias',
+    loadChildren: () => import('./menu/asistencias/asistencias.module').then( m => m.AsistenciasPageModule)
+  },
+  {
+    path: 'cambiar-clave',
+    loadChildren: () => import('./menu/cambiar-clave/cambiar-clave.module').then( m => m.CambiarClavePageModule)
+  },
+
+
+
 
   
 ];

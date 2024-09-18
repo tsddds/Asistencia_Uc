@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="warning">
     <ion-title>Iniciar Sesión</ion-title>
     <ion-buttons slot="start">
       <ion-button (click)="goBack()">
@@ -21,7 +21,7 @@
         labelPlacement="floating" helperText="" errorText=""></ion-input>
       <ion-icon slot="end" [name]="passwordIcon" (click)="togglePasswordVisibility()"></ion-icon>
     </ion-item>
-    <ion-button expand="block" type="submit" class="ion-margin-top" >Iniciar Sesión</ion-button>
+    <ion-button expand="block" type="submit" class="ion-margin-top" color="warning">Iniciar Sesión</ion-button>
   </form>
 
   <ion-button expand="block" fill="outline" color="dark" (click)="Login()">

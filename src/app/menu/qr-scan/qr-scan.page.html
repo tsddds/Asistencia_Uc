@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="warning">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registrar Asistencia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding" color="dark">
+  <div>
+    <ion-text>
+      <p>Escanea el QR para marcar tu asistencia</p>
+    </ion-text>
+
+  </div>
+  <br><br><br>
+<!--  SECCION PARA LA CAMARA -->
+<ion-grid fixed>
+  <ion-row>
+    <ion-col size="2"></ion-col>
+    <ion-col size="8">
+      <img src="../assets/QR_code.png" alt="qr">
+
+    </ion-col>
+    <ion-col size="2"></ion-col>
+  </ion-row>
+</ion-grid>
+
+</ion-content>
