@@ -7,31 +7,7 @@ import { NavController } from '@ionic/angular';
   templateUrl: './cambiar-clave.page.html',
   styleUrls: ['./cambiar-clave.page.scss'],
 })
-export class CambiarClavePage implements OnInit {
+export class CambiarClavePage  {
   
-  username: string = '';
-  password: string = '';
-
-  passwordType: string = 'password';
-  passwordIcon: string = 'eye-off';
-
-  constructor(
-    private router: Router,
-    private alertController: AlertController,
-    private navCtrl: NavController
-  ) { } 
-  ngOnInit() {
-    
-  }
-
-//Mostrar contraseña
-  togglePasswordVisibility() {
-    if (this.passwordType === 'password') {
-      this.passwordType = 'text';
-      this.passwordIcon = 'eye';
-    } else {
-      this.passwordType = 'password';
-      this.passwordIcon = 'eye-off';
-    }
-  }
+ 
 }
