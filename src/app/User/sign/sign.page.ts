@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { AlertController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
+import { AuthService } from '../../services/auth.service';
+
 @Component({
   selector: 'app-sign',
   templateUrl: './sign.page.html',
   styleUrls: ['./sign.page.scss'],
 })
 export class SignPage implements OnInit {
-
   username: string = '';
   password: string = '';
 
@@ -18,25 +19,41 @@ export class SignPage implements OnInit {
   constructor(
     private router: Router,
     private alertController: AlertController,
-    private navCtrl: NavController
-  ) { } 
-  ngOnInit() {
-    
-  }
-//Verificar si el usuario y la contraseña son correctos
-  SignIn() {
-    if (this.username === 'Usuario1' && this.password === 'MiClav3') {
-      // Guardar el nombre de usuario en localStorage
-      localStorage.setItem('username', this.username);
-      localStorage.setItem('currentPassword', this.password);
-      console.log('Credenciales correctas');
-      this.goHome();
-    } else {
-      this.presentAlert('Error de inicio de sesión', 'Usuario o contraseña incorrectos');
-    }
+    private navCtrl: NavController,
+    private authService: AuthService
+  ) { }
+
+  ngOnInit() {}
+
+  // Restablecer los campos cuando la página se va a mostrar
+  ionViewWillEnter() {
+    this.clearFields();
   }
 
- //Restablecer contraseña
+  // Método para registrar un usuario
+  signUp() {
+    if (!this.username || !this.password) {
+      this.presentAlert('Error de Validación', 'Por favor, complete todos los campos');
+      return;
+    }
+    // Llamada al servicio de autenticación para registrar
+    this.authService.register(this.username, this.password).subscribe(isRegistered => {
+      if (isRegistered) {
+        localStorage.setItem('username', this.username);
+        this.navCtrl.navigateRoot('/home');
+      } else {
+        this.presentAlert('Error de registro', 'El correo ya está registrado');
+      }
+    });
+  }
+
+  // Limpiar campos de input
+  clearFields() {
+    this.username = '';
+    this.password = '';
+  }
+
+  // Restablecer contraseña
   async resetPassword() {
     const alert = await this.alertController.create({
       header: 'Restablecer contraseña',
@@ -50,7 +67,6 @@ export class SignPage implements OnInit {
           text: 'Enviar',
           handler: () => {
             console.log('Enviar enlace de restablecimiento de contraseña');
-            // Aquí iría la lógica para enviar el correo de restablecimiento
           }
         }
       ]
@@ -58,17 +74,18 @@ export class SignPage implements OnInit {
 
     await alert.present();
   }
-  //Navegaciones
+
+  // Navegación a la página principal después del registro
   goHome() {
     this.navCtrl.navigateRoot('/home'); 
   }
-  goBack() {
-    this.navCtrl.navigateRoot('/home'); 
-  }
-  Login() {
+
+  // Navegación a la página de login
+  login() {
     this.router.navigate(['/login']); 
   }
-  //Alertas
+
+  // Alertas de error
   async presentAlert(header: string, message: string) {
     const alert = await this.alertController.create({
       header: header,
@@ -77,7 +94,8 @@ export class SignPage implements OnInit {
     });
     await alert.present();
   }
-//Mostrar contraseña
+
+  // Mostrar/ocultar contraseña
   togglePasswordVisibility() {
     if (this.passwordType === 'password') {
       this.passwordType = 'text';
