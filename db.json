@@ -6,15 +6,21 @@
       "email": "profesor1@example.com",
       "password": "password123",
       "role": "profesor",
-      "classes": ["1", "2"]
+      "classes": [
+        "1",
+        "2"
+      ]
     },
     {
       "id": "2",
       "name": "Alumno1",
       "email": "alumno1@example.com",
-      "password": "password456",
+      "password": "1234567tsung",
       "role": "alumno",
-      "classes": ["1", "3"]
+      "classes": [
+        "1",
+        "3"
+      ]
     },
     {
       "id": "3",
@@ -22,7 +28,9 @@
       "email": "alumno2@example.com",
       "password": "password789",
       "role": "alumno",
-      "classes": ["2"]
+      "classes": [
+        "2"
+      ]
     }
   ],
   "classes": [
@@ -32,8 +40,8 @@
       "subject": "Matemáticas",
       "section": "001",
       "day": "Lunes",
-      "startTime": "09:00",   
-      "endTime": "10:30",     
+      "startTime": "09:00",
+      "endTime": "10:30",
       "professorId": "1",
       "qrCode": "QR_CODE_123"
     },
@@ -53,9 +61,9 @@
       "name": "Introducción a la Física",
       "subject": "Física",
       "section": "001",
-      "day": "Jueves",       
+      "day": "Jueves",
       "startTime": "12:00",
-      "endTime": "12:30",       
+      "endTime": "12:30",
       "professorId": "1",
       "qrCode": "QR_CODE_789"
     }

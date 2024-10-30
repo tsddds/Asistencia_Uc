@@ -20,12 +20,10 @@
           <ion-col size="2"></ion-col>
           <ion-col size="8">
             <img src="../assets/Logo_DuocUC.png" alt="qr">
-      
           </ion-col>
           <ion-col size="2"></ion-col>
         </ion-row>
       </ion-grid>
-      
       
       <h1 style="text-align: center;">Bienvenido, {{ username }}!</h1>
       <p style="text-align: center;">¿Qué deseas hacer hoy?</p>
@@ -34,25 +32,34 @@
         <ion-row>
           <ion-col size="1"></ion-col>
           <ion-col size="10">
-            <ion-button [routerLink]="['/qr-scan']" color="warning" expand="block" size="large">
-              <ion-icon slot="start" name="qr-code-outline"></ion-icon>
-              Registrar Asistencia
+            <!-- Mostrar solo este botón si el usuario es profesor -->
+            <ion-button *ngIf="isProfessor" [routerLink]="['/clases-a-cargo']" color="warning" expand="block" size="large">
+              <ion-icon slot="start" name="briefcase-outline"></ion-icon>
+              Clases a Cargo
             </ion-button>
-            <br>
-            <ion-button [routerLink]="['/asignaturas']" color="warning" expand="block" size="large">
-              <ion-icon slot="start" name="calendar-outline"></ion-icon>
-              Mis Asignaturas
-            </ion-button>
-            <br>
-            <ion-button [routerLink]="['/asistencias']" color="warning" expand="block" size="large">
-              <ion-icon slot="start" name="checkmark-outline"></ion-icon>
-              Mis Asistencias
-            </ion-button>
-            <br>
-            <ion-button [routerLink]="['/cambiar-clave']" color="warning" expand="block" size="large">
-              <ion-icon slot="start" name="key-outline"></ion-icon>
-              Cambiar Clave
-            </ion-button>
+
+            <!-- Mostrar estos botones solo si el usuario NO es profesor (es decir, es un estudiante) -->
+            <ng-container *ngIf="!isProfessor">
+              <ion-button [routerLink]="['/qr-scan']" color="warning" expand="block" size="large">
+                <ion-icon slot="start" name="qr-code-outline"></ion-icon>
+                Registrar Asistencia
+              </ion-button>
+              <br>
+              <ion-button [routerLink]="['/asignaturas']" color="warning" expand="block" size="large">
+                <ion-icon slot="start" name="calendar-outline"></ion-icon>
+                Mis Asignaturas
+              </ion-button>
+              <br>
+              <ion-button [routerLink]="['/asistencias']" color="warning" expand="block" size="large">
+                <ion-icon slot="start" name="checkmark-outline"></ion-icon>
+                Mis Asistencias
+              </ion-button>
+              <br>
+              <ion-button [routerLink]="['/cambiar-clave']" color="warning" expand="block" size="large">
+                <ion-icon slot="start" name="key-outline"></ion-icon>
+                Cambiar Clave
+              </ion-button>
+            </ng-container>
           </ion-col>
           <ion-col size="1"></ion-col>
         </ion-row>
@@ -71,5 +78,4 @@
       </ion-button>
     </div>
   </ng-template>
- 
 </ion-content>

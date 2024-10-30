@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { AlertController } from '@ionic/angular'; // Importar AlertController
-
+import { AlertController } from '@ionic/angular';
+import { AuthService } from '../../services/auth.service';
+import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-change-password',
   templateUrl: './change-password.component.html',
@@ -16,9 +17,13 @@ export class ChangePasswordComponent {
   passwordType1: string = 'password';
   passwordIcon1: string = 'eye-off';
 
-  constructor(private alertController: AlertController) { } // Inyectar AlertController
+  constructor(
+    private alertController: AlertController,
+    private authService: AuthService,
+    private navCtrl: NavController
+  ) {}
 
-  async presentAlert(header: string, message: string) { // Método para mostrar alertas
+  async presentAlert(header: string, message: string) {
     const alert = await this.alertController.create({
       header: header,
       message: message,
@@ -28,40 +33,33 @@ export class ChangePasswordComponent {
   }
 
   async changePassword() {
-    const storedPassword = localStorage.getItem('currentPassword');
-
-    if (this.oldPassword !== storedPassword) {
-      await this.presentAlert('Error', 'La contraseña actual es incorrecta'); // Usar presentAlert
-      return;
-    }
-
     if (this.newPassword !== this.confirmPassword) {
-      await this.presentAlert('Error', 'Las nuevas contraseñas no coinciden'); // Usar presentAlert
+      await this.presentAlert('Error', 'Las nuevas contraseñas no coinciden');
       return;
     }
 
-    // Lógica para cambiar la contraseña
-    localStorage.setItem('currentPassword', this.newPassword);
-    await this.presentAlert('Éxito', 'Contraseña cambiada con éxito'); // Usar presentAlert
+    this.authService.changePassword(this.oldPassword, this.newPassword).subscribe(
+      async (success) => {
+        if (success) {
+          await this.presentAlert('Éxito', 'Contraseña cambiada con éxito');
+          this.oldPassword = '';
+          this.newPassword = '';
+          this.confirmPassword = '';
+          this.navCtrl.navigateRoot('/login');
+        } else {
+          await this.presentAlert('Error', 'La contraseña antigua es incorrecta');
+        }
+      }
+    );
   }
 
   togglePasswordVisibility() {
-    if (this.passwordType === 'password') {
-      this.passwordType = 'text';
-      this.passwordIcon = 'eye';
-    } else {
-      this.passwordType = 'password';
-      this.passwordIcon = 'eye-off';
-    }
+    this.passwordType = this.passwordType === 'password' ? 'text' : 'password';
+    this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
   }
 
   togglePasswordVisibility1() {
-    if (this.passwordType1 === 'password') {
-      this.passwordType1 = 'text';
-      this.passwordIcon1 = 'eye';
-    } else {
-      this.passwordType1 = 'password';
-      this.passwordIcon1 = 'eye-off';
-    }
+    this.passwordType1 = this.passwordType1 === 'password' ? 'text' : 'password';
+    this.passwordIcon1 = this.passwordIcon1 === 'eye-off' ? 'eye' : 'eye-off';
   }
 }
