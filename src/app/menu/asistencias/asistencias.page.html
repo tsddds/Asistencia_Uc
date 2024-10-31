@@ -8,20 +8,23 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <ion-list>
-    <ion-item color="warning">
-      <ion-label>Asignatura</ion-label>
-      <ion-label>Fecha</ion-label>
-      <ion-label>Presente</ion-label>
-    </ion-item>
-      <ion-item *ngFor="let asistensia of asistencias">
-        <ion-label>{{asistensia.asignatura | uppercase }}</ion-label>
-        <ion-label >{{asistensia.fecha | uppercase}}</ion-label> 
-        <ion-label *ngIf="asistensia.presente == true; else noasistio"><ion-icon  name="checkmark-outline"></ion-icon></ion-label>
-        <ng-template #noasistio >
-          <ion-label><ion-icon  name="close-outline"></ion-icon></ion-label>
-        </ng-template> 
-      </ion-item>
 
-  </ion-list>
-</ion-content>
+
+
+
+  <ion-accordion-group>
+    <ion-accordion *ngFor="let asignatura of asistenciasData" expand="true">
+      <ion-item slot="header">
+        <ion-label>{{ asignatura.nombre }}</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content" *ngFor="let asistencia of asignatura.asistencias">
+          <ion-list>
+            <ion-item>
+              <ion-label>Fecha: {{ asistencia.fecha }}</ion-label>
+              <ion-label>Presente: {{ asistencia.presente ? 'Sí' : 'No' }}</ion-label>
+            </ion-item>
+          </ion-list>
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+
