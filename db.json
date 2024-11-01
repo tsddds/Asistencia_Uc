@@ -37,7 +37,7 @@
     {
       "id": "1",
       "name": "Matemáticas Básicas",
-      "subject": "Matemáticas",
+      "subject": "MAT1234",
       "section": "001",
       "day": "Lunes",
       "startTime": "09:00",
@@ -48,7 +48,7 @@
     {
       "id": "2",
       "name": "Historia Universal",
-      "subject": "Historia",
+      "subject": "HSU1341",
       "section": "002",
       "day": "Martes",
       "startTime": "11:00",
@@ -59,7 +59,7 @@
     {
       "id": "3",
       "name": "Introducción a la Física",
-      "subject": "Física",
+      "subject": "CFI2424",
       "section": "001",
       "day": "Jueves",
       "startTime": "12:00",
