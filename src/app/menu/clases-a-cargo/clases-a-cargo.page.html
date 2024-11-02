@@ -12,10 +12,10 @@
   <ion-accordion-group>
     <ion-accordion *ngFor="let clase of clases" expand="true">
       <ion-item slot="header">
-        <ion-label>{{clase.subject}}</ion-label>
+        <ion-label>{{clase.subject}} - {{clase.section}}</ion-label>
       </ion-item>
       <div class="ion-padding" slot="content" style="text-align: center; ">
-        <ion-button color="warning" expand="full">
+        <ion-button color="warning" expand="full" [routerLink]="['../qr-generate',clase.id]">
           <ion-icon slot="icon-only" name="qr-code-outline"></ion-icon>.
           Obtener qr de la clase
         </ion-button>

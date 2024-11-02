@@ -4,18 +4,6 @@ import { Router } from '@angular/router';
 import { map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 
-interface Classes {
-  id: string;
-  name: string;
-  subject: string;
-  section: string;
-  day: string;
-  startTime: string;
-  endTime: string;
-  professorId: string;
-  qrCode: string;
-}
-
 @Component({
   selector: 'app-clases-a-cargo',
   templateUrl: './clases-a-cargo.page.html',
@@ -44,4 +32,5 @@ export class ClasesACargoPage implements OnInit {
       })
     );
   }
+ 
 }

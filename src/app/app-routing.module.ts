@@ -37,10 +37,12 @@ const routes: Routes = [
   {
     path: 'clases-a-cargo',
     loadChildren: () => import('./menu/clases-a-cargo/clases-a-cargo.module').then( m => m.ClasesACargoPageModule)
-  },  {
-    path: 'qr-generate',
+  },
+  {
+    path: 'qr-generate/:id',
     loadChildren: () => import('./menu/qr-generate/qr-generate.module').then( m => m.QrGeneratePageModule)
   },
+  
 
 
 
