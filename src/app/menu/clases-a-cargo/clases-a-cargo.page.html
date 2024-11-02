@@ -1,0 +1,16 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="warning">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mis Clases</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list >
+    <ion-item *ngFor="let clase of clases">
+      <ion-label >{{clase.subject}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

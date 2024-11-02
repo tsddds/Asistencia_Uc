@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { ClasesACargoComponent } from './components/clases-a-cargo/clases-a-cargo.component'; 
 const routes: Routes = [
   {
     path: 'home',
@@ -35,7 +34,15 @@ const routes: Routes = [
     path: 'cambiar-clave',
     loadChildren: () => import('./menu/cambiar-clave/cambiar-clave.module').then( m => m.CambiarClavePageModule)
   },
-  { path: 'clases-a-cargo', component: ClasesACargoComponent },
+  {
+    path: 'clases-a-cargo',
+    loadChildren: () => import('./menu/clases-a-cargo/clases-a-cargo.module').then( m => m.ClasesACargoPageModule)
+  },  {
+    path: 'qr-generate',
+    loadChildren: () => import('./menu/qr-generate/qr-generate.module').then( m => m.QrGeneratePageModule)
+  },
+
+
 
 
 
