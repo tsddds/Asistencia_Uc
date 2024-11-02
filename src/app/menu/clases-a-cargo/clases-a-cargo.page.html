@@ -8,9 +8,20 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-list >
-    <ion-item *ngFor="let clase of clases">
-      <ion-label >{{clase.subject}}</ion-label>
-    </ion-item>
-  </ion-list>
-</ion-content>
+  <div>
+  <ion-accordion-group>
+    <ion-accordion *ngFor="let clase of clases" expand="true">
+      <ion-item slot="header">
+        <ion-label>{{clase.subject}}</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content" style="text-align: center; ">
+        <ion-button color="warning" expand="full">
+          <ion-icon slot="icon-only" name="qr-code-outline"></ion-icon>.
+          Obtener qr de la clase
+        </ion-button>
+
+
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+</div>
